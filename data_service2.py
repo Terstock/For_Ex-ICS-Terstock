@@ -3,41 +3,41 @@
 """
 
 
-def get_orders():
+def get_dovidniks():
     """ повертає список заказів який отримує ззовні
 
     Returns:
         order_list: список заказів
     """    
 
-    with open("./data/orders.txt", encoding="utf-8") as orders_file:
-        from_file = orders_file.readlines()
+    with open("./data/dovidniks.txt", encoding="utf-8") as dovidniks_file:
+        from_file = dovidniks_file.readlines()
 
     # накопічувач клієнтів
-    orders_list = []
+    dovidniks_list = []
 
     for line in from_file:
         #відрізати '\n' в кінці рядка
         line = line[:-1]
         line_list = line.split(';')
-        orders_list.append(line_list)
+        dovidniks_list.append(line_list)
     
-    return orders_list
+    return dovidniks_list
 
-def show_orders(orders):
+def show_dovidniks(dovidniks):
     """виводить на екран список заказів заданого діапазона
 
     Args:
-        orders ([list]): список заказів
+        dovidniks ([list]): список заказів
     """
 
-    order_code_from = input("З якого кода? ")
-    order_code_to   = input("По який код? ") 
+    dovidnik_code_from = input("З якого кода? ")
+    dovidnik_code_to   = input("По який код? ") 
 
-    for order in orders:
-        if  order_code_from <= order[0] <= order_code_to: 
-            print("код: {}; назва: {}; автор: {}; ціна: {} грн.".format(order[0], order[1], order[2], order[3]))
+    for dovidnik in dovidniks:
+        if  dovidnik_code_from <= dovidnik[0] <= dovidnik_code_to: 
+            print("код: {}; назва: {}; автор: {}; ціна: {} грн.".format(dovidnik[0], dovidnik[1], dovidnik[2], dovidnik[3]))
 
 
-#orders = get_orders()
-#show_orders(orders)
+#dovidniks = get_dovidniks()
+#show_dovidniks(dovidniks)

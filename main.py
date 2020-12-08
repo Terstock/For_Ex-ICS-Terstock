@@ -6,8 +6,8 @@
 import os
 import process_data2, data_service1, data_service2
 from process_data2 import create_analize
-from data_service1 import show_clients, get_clients
-from data_service2 import show_orders, get_orders
+from data_service1 import show_zayavki, get_zayavki
+from data_service2 import show_dovidniks, get_dovidniks
 
 MAIN_MENU = \
 """
@@ -98,13 +98,13 @@ while True:
         input(STOP_MESSAGE)
         
     elif command_number == '3':
-        orders = get_orders()
-        show_orders(orders)
+        orders = get_dovidniks()
+        show_dovidniks(orders)
         input(STOP_MESSAGE)
         
     elif command_number == '4':
-        clients = get_clients()
-        show_clients(clients)
+        clients = get_zayavki()
+        show_zayavki(clients)
         input(STOP_MESSAGE)
 
 

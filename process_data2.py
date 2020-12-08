@@ -1,7 +1,7 @@
 """ розрахунок заявок на товари по магазину
 """
-from data_service1 import get_clients
-from data_service2 import get_orders
+from data_service1 import get_zayavki
+from data_service2 import get_dovidniks
 
 # словник в якому будуть накоплюватись результати розрахунків
 rahunok = {
@@ -11,7 +11,7 @@ rahunok = {
     'author'           : '',            #автор
     'price'            : 0.0,           #ціна
     'amount'           : 0.0,           #кількість
-    'podatok'          : 0.0,           #податок на подану вартість
+    'podatok'          : 0.0,           #податок на додану вартість
     'total'            : 0.0            #сума
 }
 
@@ -22,22 +22,22 @@ def create_analize():
         rahunok_list: список заявок
     """
     
-    def get_cod_of_orderer(client_code):
+    def get_cod_of_orderer(zayavka_code):
         """знаходить код замовника товару
 
         Args:
-            client_code ([type]): код клієнта
+            (zayavka_code ([type]): код клієнта
 
         Returns:
             [type]: код замовника товару
         """
-        for client in clients:
-            if client_code == client[2]:
-                return client[0]
+        for zayavka in zayavki:
+            if zayavka_code == zayavka[2]:
+                return zayavka[0]
             
         return "*** назва не знайдена"
     
-    def get_amount(client_code):
+    def get_amount(zayavka_code):
         """знаходить кількість товару
 
         Args:
@@ -46,31 +46,31 @@ def create_analize():
         Returns:
             [type]: кількість товару
         """
-        for client in clients:
-            if client_code == client[2]:
-                return client[3]
+        for zayavka in zayavki:
+            if zayavka_code == zayavka[2]:
+                return zayavka[3]
             
         return "*** назва не знайдена"
     
     # накопичувач рахунку-фактури 
     rahunok_list = []
 
-    orders = get_orders()
-    clients = get_clients()
+    dovidniks = get_dovidniks()
+    zayavki = get_zayavki()
 
-    for order in orders:
+    for dovidnik in dovidniks:
         
         # робоча змінна
         rahunok_work = rahunok.copy()
         
-        rahunok_work['cod of orderer'] = get_cod_of_orderer(order[0])                       #код замовника
-        rahunok_work['cod of product'] = order[0]                                           #код товару
-        rahunok_work['name'] = order[1]                                                     #назва
-        rahunok_work['author'] = order[2]                                                   #автор
-        rahunok_work['price'] = order[3]                                                    #ціна
-        rahunok_work['amount'] = get_amount(order[0])                                       #кількість
-        rahunok_work['podatok']  = int(rahunok_work['price']) * int(rahunok_work['amount']) * float(0.2)                                               
-        rahunok_work['total'] =  int(rahunok_work['price']) * int(rahunok_work['amount']) + int(rahunok_work['podatok'])
+        rahunok_work['cod of orderer'] = get_cod_of_orderer(dovidnik[0])                                                      #код замовника
+        rahunok_work['cod of product'] = dovidnik[0]                                                                          #код товару
+        rahunok_work['name'] = dovidnik[1]                                                                                    #назва товару
+        rahunok_work['author'] = dovidnik[2]                                                                                  #автор
+        rahunok_work['price'] =dovidnik[3]                                                                                   #ціна
+        rahunok_work['amount'] = get_amount(dovidnik[0])                                                                      #кількість
+        rahunok_work['podatok']  = int(rahunok_work['price']) * int(rahunok_work['amount']) * float(0.2)                   #податок на додану вартість                              
+        rahunok_work['total'] =  int(rahunok_work['price']) * int(rahunok_work['amount']) + int(rahunok_work['podatok'])   #сума
 
         rahunok_list.append(rahunok_work)
        

@@ -3,11 +3,10 @@
 """
 
 
-def get_clients():
+def get_zayavki():
     """ повертає список клієнтів який отримує ззовні
-
     Returns:
-        client_list: список клієнтів
+        zayavka_list: список клієнтів
     """    
 
     from_file = [
@@ -32,29 +31,29 @@ def get_clients():
     ]
 
     # накопічувач клієнтів
-    clients_list = []
+    zayavki_list = []
 
     for line in from_file:
         #line = line[:-2]
         line_list = line.split(';')
-        clients_list.append(line_list)
+        zayavki_list.append(line_list)
     
-    return clients_list
+    return zayavki_list
 
-def show_clients(clients):
+def show_zayavki(zayavki):
     """виводить на екран список клієнтів заданого діапазона
 
     Args:
-        clients ([list]): список клієнтів
+        zayavki ([list]): список клієнтів
     """
 
-    client_code_from = input("З якого кода? ")
-    client_code_to   = input("По який код? ") 
+    zayavka_code_from = input("З якого кода? ")
+    zayavka_code_to   = input("По який код? ") 
 
-    for client in clients:
-        if  client_code_from <= client[2] <= client_code_to: 
-            print("замовник: {}; код замовлення: {}; код товару: {}; кількість: {} шт.".format(client[0], client[1], client[2], client[3]))
+    for zayavka in zayavki:
+        if  zayavka_code_from <= zayavka[2] <= zayavka_code_to: 
+            print("замовник: {}; код замовлення: {}; код товару: {}; кількість: {} шт.".format(zayavka[0], zayavka[1], zayavka[2], zayavka[3]))
 
 
-#clients = get_clients()
-#show_clients(clients)
+#zayavki = get_zayavki()
+#show_zayavki(zayavki)
