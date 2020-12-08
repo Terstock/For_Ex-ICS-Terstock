@@ -2,7 +2,6 @@
 - зчитування та вивід на екран
 """
 
-
 def get_zayavki():
     """ повертає список заявок на постачання товару, який отримує ззовні
     Returns:
@@ -53,7 +52,6 @@ def show_zayavki(zayavki):
     for zayavka in zayavki:
         if  zayavka_code_from <= zayavka[2] <= zayavka_code_to: 
             print("замовник: {}; код замовлення: {}; код товару: {}; кількість: {} шт.".format(zayavka[0], zayavka[1], zayavka[2], zayavka[3]))
-
 
 #zayavki = get_zayavki()
 #show_zayavki(zayavki)

@@ -2,7 +2,6 @@
 - зчитування та вивід на екран
 """
 
-
 def get_dovidniks():
     """ повертає список довідника товарів, який отримує ззовні
 
@@ -37,7 +36,6 @@ def show_dovidniks(dovidniks):
     for dovidnik in dovidniks:
         if  dovidnik_code_from <= dovidnik[0] <= dovidnik_code_to: 
             print("код: {}; назва: {}; автор: {}; ціна: {} грн.".format(dovidnik[0], dovidnik[1], dovidnik[2], dovidnik[3]))
-
 
 #dovidniks = get_dovidniks()
 #show_dovidniks(dovidniks)
