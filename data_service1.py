@@ -4,9 +4,9 @@
 
 
 def get_zayavki():
-    """ повертає список клієнтів який отримує ззовні
+    """ повертає список заявок на постачання товару, який отримує ззовні
     Returns:
-        zayavka_list: список клієнтів
+        zayavka_list: список заявок на постачання товару
     """    
 
     from_file = [
@@ -30,24 +30,24 @@ def get_zayavki():
         "КНУ;1100;1006;210"
     ]
 
-    # накопічувач клієнтів
+    # накопічувач заявок
     zayavki_list = []
 
     for line in from_file:
-        #line = line[:-2]
+        #line = line[:-2]                #обрізання строк
         line_list = line.split(';')
         zayavki_list.append(line_list)
     
     return zayavki_list
 
 def show_zayavki(zayavki):
-    """виводить на екран список клієнтів заданого діапазона
+    """виводить на екран список заявок заданого діапазона
 
     Args:
-        zayavki ([list]): список клієнтів
+        zayavki ([list]): список заявок
     """
 
-    zayavka_code_from = input("З якого кода? ")
+    zayavka_code_from = input("З якого коду? ")
     zayavka_code_to   = input("По який код? ") 
 
     for zayavka in zayavki:

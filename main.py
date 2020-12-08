@@ -21,7 +21,7 @@ MAIN_MENU = \
 ---------------------------------------------------
 """
 
-TITLE = "ЗАЯВКА НА ПРОДАЖ УСТАТКУВАННЯ ПО МАГАЗИНУ"
+TITLE = "~~~~~~~~~~~~ ВИХІДНІ ДАНІ РАХУНКУ-ФАКТУРИ ~~~~~~~~~~~~"
 
 HEADER =        \
 """
@@ -39,26 +39,26 @@ FOOTER = \
 STOP_MESSAGE = "Для продовження натисніть <Enter>"
 
 def show_analize_table(rahunok_list):
-    """вивід на екран таблиці заявок на постачання товару
+    """вивід на екран таблиці заявок рахунку-фактури
     """
-    print(f"\n\n{TITLE:^62}")
+    print(f"\n\n{TITLE:^155}") #62
     print(HEADER)
     
     for rahunok in rahunok_list:
         print(f"{rahunok['cod of orderer']:^15}",        #код замовника
               f"{rahunok['cod of product']:^16}",        #код продукту
-              f"{rahunok['name']:53}",                     #назва
-              f"{rahunok['author']:20}",               #автор
-              f"{rahunok['price']:>3}",             #ціна
-              f"{rahunok['amount']:>12}",            #кількість
-              f"{int(rahunok['podatok']):>12}",
-              f"{rahunok['total']:>12}"              #сума
+              f"{rahunok['name']:53}",                   #назва товару
+              f"{rahunok['author']:20}",                 #автор
+              f"{rahunok['price']:>3}",                  #ціна
+              f"{rahunok['amount']:>12}",                #кількість
+              f"{int(rahunok['podatok']):>12}",          #податок на додану вартість
+              f"{rahunok['total']:>12}"                  #сума
               )
 
     print(FOOTER)
     
 def write_analize(rahunok_list):
-    """ запис заявок на постачання товару в файл
+    """ запис заявок рахунку-фактури в файл
     """  
     with open('./data/analize.txt', "w") as analize_file:
         for rahunok in rahunok_list:
@@ -73,7 +73,7 @@ def write_analize(rahunok_list):
 
             analize_file.write(line)
             
-    print("Файл  успішно сформовано ...")
+    print("Файл  успішно сформовано - можете його переглянути ...")
     
     
 while True:

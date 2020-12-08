@@ -4,16 +4,16 @@
 
 
 def get_dovidniks():
-    """ повертає список заказів який отримує ззовні
+    """ повертає список довідника товарів, який отримує ззовні
 
     Returns:
-        order_list: список заказів
+        dovidniks_list: список довідника
     """    
 
     with open("./data/dovidniks.txt", encoding="utf-8") as dovidniks_file:
         from_file = dovidniks_file.readlines()
 
-    # накопічувач клієнтів
+    # накопічувач довідника товарів
     dovidniks_list = []
 
     for line in from_file:
@@ -25,13 +25,13 @@ def get_dovidniks():
     return dovidniks_list
 
 def show_dovidniks(dovidniks):
-    """виводить на екран список заказів заданого діапазона
+    """виводить на екран список довідника товарів заданого діапазона
 
     Args:
-        dovidniks ([list]): список заказів
+        dovidniks ([list]): список довідника товарів
     """
 
-    dovidnik_code_from = input("З якого кода? ")
+    dovidnik_code_from = input("З якого коду? ")
     dovidnik_code_to   = input("По який код? ") 
 
     for dovidnik in dovidniks:
