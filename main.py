@@ -4,8 +4,8 @@
 """
 
 import os
-import process_data, data_service1, data_service2
-from process_data import create_analize
+import process_data2, data_service1, data_service2
+from process_data2 import create_analize
 from data_service1 import show_clients, get_clients
 from data_service2 import show_orders, get_orders
 
